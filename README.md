@@ -1,6 +1,6 @@
 # RecomendBooks
 
-![alt text](Image/intro2.png)
+![alt text](image.png)
 
 
 
