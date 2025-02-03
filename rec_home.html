@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: url("{{url_for('static', filename='rec_img1.png')}}") no-repeat center center;
+            background-size: cover;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #f0f8ff;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #f0f8ff;
+        }
+        select, input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #f0f8ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Recommendation Form</h1>
+        <form action="{{url_for('predict')}}" method="post">
+            <label for="age">Age Bracket:</label>
+            <select id="age" name="age">
+                <option value="15-24">15-24</option>
+                <option value="25-34">25-34</option>
+                <option value="35-44">35-44</option>
+                <option value="45-54">45-54</option>
+                <option value="55-64">55-64</option>
+                <option value="65-74">65-74</option>
+                <option value="75+">75+</option>
+            </select>
+            <label for="occupation">Occupation:</label>
+            <select id="occupation" name="occupation">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="engineer">Engineer</option>
+                <option value="doctor">Doctor</option>
+                <option value="lawyer">Lawyer</option>
+                <option value="artist">Artist</option>
+                <option value="business">Business</option>
+                <option value="retired">Retired</option>
+                <option value="other">Other</option>
+            </select>
+            <label for="interests">Interests:</label>
+            <select id="interests" name="interests" multiple>
+                <option value="sports">Sports</option>
+                <option value="music">Music</option>
+                <option value="travel">Travel</option>
+                <option value="reading">Reading</option>
+                <option value="cooking">Cooking</option>
+                <option value="technology">Technology</option>
+                <option value="art">Art</option>
+                <option value="photography">Photography</option>
+                <option value="gaming">Gaming</option>
+                <option value="fitness">Fitness</option>
+                <option value="other">Other</option>
+            </select>
+            <label for="genre">Preferred Book Genre:</label>
+            <select id="genre" name="genre">
+                <option value="Adventure stories">Adventure stories</option>
+                <option value="American fiction">American fiction</option>
+                <option value="Architecture">Architecture</option>
+                <option value="Art">Art</option>
+                <option value="Authors, American">Authors, American</option>
+                <option value="Biography & Autobiography">Biography & Autobiography</option>
+                <option value="Body, Mind & Spirit">Body, Mind & Spirit</option>
+                <option value="Business & Economics">Business & Economics</option>
+                <option value="Children's stories">Children's stories</option>
+                <option value="Comics & Graphic Novels">Comics & Graphic Novels</option>
+                <option value="Computers">Computers</option>
+                <option value="Cooking">Cooking</option>
+                <option value="Detective and mystery stories">Detective and mystery stories</option>
+                <option value="Drama">Drama</option>
+                <option value="Education">Education</option>
+                <option value="English fiction">English fiction</option>
+                <option value="Family & Relationships">Family & Relationships</option>
+                <option value="Fantasy fiction">Fantasy fiction</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Foreign Language Study">Foreign Language Study</option>
+                <option value="Games">Games</option>
+                <option value="Health & Fitness">Health & Fitness</option>
+                <option value="History">History</option>
+                <option value="Humor">Humor</option>
+                <option value="Juvenile Fiction">Juvenile Fiction</option>
+                <option value="Juvenile Nonfiction">Juvenile Nonfiction</option>
+                <option value="Language Arts & Disciplines">Language Arts & Disciplines</option>
+                <option value="Law">Law</option>
+                <option value="Literary Collections">Literary Collections</option>
+                <option value="Literary Criticism">Literary Criticism</option>
+                <option value="Medical">Medical</option>
+                <option value="Music">Music</option>
+                <option value="Nature">Nature</option>
+                <option value="Performing Arts">Performing Arts</option>
+                <option value="Philosophy">Philosophy</option>
+                <option value="Photography">Photography</option>
+                <option value="Poetry">Poetry</option>
+                <option value="Political Science">Political Science</option>
+                <option value="Psychology">Psychology</option>
+                <option value="Reference">Reference</option>
+                <option value="Religion">Religion</option>
+                <option value="Science">Science</option>
+                <option value="Science fiction">Science fiction</option>
+                <option value="Self-Help">Self-Help</option>
+                <option value="Social Science">Social Science</option>
+                <option value="Sports & Recreation">Sports & Recreation</option>
+                <option value="Travel">Travel</option>
+                <option value="True Crime">True Crime</option>
+                <option value="Young Adult Fiction">Young Adult Fiction</option>
+                <option value="Social Issues and Psychology">Social Issues and Psychology</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+                <option value="Professions and Occupations">Professions and Occupations</option>
+                <option value="Relationships and Family">Relationships and Family</option>
+                <option value="Literature and Arts">Literature and Arts</option>
+                <option value="Animals and Nature">Animals and Nature</option>
+                <option value="History and Mythology">History and Mythology</option>
+                <option value="Science and Technology">Science and Technology</option>
+                <option value="Places (Real and Imaginary)">Places (Real and Imaginary)</option>
+                <option value="Themes and Topics">Themes and Topics</option>
+                <option value="Fictional Characters">Fictional Characters</option>
+            </select>
+            <label for="location">Location:</label>
+            <select id="location" name="location">
+                <option value="Africa">Africa</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="North America">North America</option>
+                <option value="South America">South America</option>
+                <option value="Australia">Australia</option>
+                <option value="Antarctica">Antarctica</option>
+            </select>
+            <input type="submit" value="Recommend">
+        </form>
+        <div class="footer">Model built by Adesegun Oluwademilade Daniel</div>
+    </div>
+</body>
+</html>
